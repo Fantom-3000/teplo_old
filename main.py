@@ -19,13 +19,14 @@ def btn_raschet_clk():
     t = (t1 * v1 + t2 * v2) / (v1 + v2) # Вычисление конечной температуры воды после смешения
     t3 = t1 - t # Вычисление температуры температуры воды
     w1 = 0.00117 * v3 * (t1 - t) / w # Вычисление расходы электроэнергии на подогрев воды
-
-    label_r1.setText('Общий объем воды - ' + str('%.1f' %v3) +' литров\n\n'
+    raschet_str = ('Общий объем воды - ' + str('%.1f' %v3) +' литров\n\n'
                     + 'Температура воды после смешения уменьшится на ' + str('%.1f' %t3) 
                     + ' градусов и будет равна ' + str('%.1f' %t) + ' градуса\n\n'
                     + 'Для подогрева воды до установленной темературы необходимо ' 
                     + str('%.1f' %(60 * w1)) + ' минут (' + str('%.1f' %w1) + ' часа) и будет затрачено ' 
                     + str('%.3f' %(w*w1)) + ' кВт')
+
+    label_r1.setText(raschet_str)
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
@@ -71,6 +72,7 @@ if __name__ == '__main__':
     label_r1.setFont(font2)
 
     btn_raschet = QtWidgets.QPushButton('Расчитать')
+    btn_raschet.setFont(font1)
 
     vbox_1.addWidget(label_t1)
     vbox_1.addWidget(edit_t1)
